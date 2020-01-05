@@ -143,12 +143,8 @@ void sendINA219valuesENERGY() {
   }
   energyPrevious = energy;
   // ENERGY COST
-  energyCost = energyCost + ((energyPrice / 1000 / 100) * energyDifference);
-  if (energyCost > 9.999) {
-    Blynk.virtualWrite(vPIN_ENERGY_COST, String((energyCost), 7));
-  } else {
-    Blynk.virtualWrite(vPIN_ENERGY_COST, String((energyCost), 8));
-  }
+  energyCost = energyCost + ((energyPrice / 100) * energyDifference);
+  Blynk.virtualWrite(vPIN_ENERGY_COST, String((energyCost), 4) + String('c'));
 }
 
 // HOLD BUTTON
